@@ -4,11 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='styles.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Calculator</title>
 </head>
 <body>
-
+    <header>
+       <h1>Calculator</h1> 
+    </header>
     
+    <div id=flex-container>
+        <div id=flex-left>
+
+        </div>
+        <div id=calculator>
+            <div id=calculator-screen>
+                <p>123456</p>
+            </div>
+            <div id=calculator-buttons>
+                <button class=calculator-button-top value='clear'>C</button>
+                <button class=calculator-button-top value='%'>%</button>
+                <button class=calculator-button value='7'>7</button>
+                <button class=calculator-button value='8'>8</button>
+                <button class=calculator-button value='9'>9</button>
+                <button class=calculator-button value='-'>-</button>
+                <button class=calculator-button value='4'>4</button>
+                <button class=calculator-button value='5'>5</button>
+                <button class=calculator-button value='6'>6</button>
+                <button class=calculator-button value='+'>+</button>
+                <button class=calculator-button value='1'>1</button>
+                <button class=calculator-button value='2'>2</button>
+                <button class=calculator-button value='3'>3</button>
+                <button class=calculator-button value='/'>/</button>
+                <button class=calculator-button value='0'>0</button>
+                <button class=calculator-button value='.'>.</button>
+                <button class=calculator-button value='='>=</button>
+                <button class=calculator-button value='*'>*</button>
+            </div>
+        </div>
+        <div id=flex-right>
+
+        </div>
+    
+    </div>
+
+    <footer>
+        <p>Dark Mode</p>
+        <p>Socials <a href='https://github.com/De-L3ns'><i class="fa fa-github" style="font-size:36px"></i></a><a href='google.be'><i class="fa fa-linkedin-square" style="font-size:36px"></i></a></p>
+        
+    </footer>
+    
+
 <script src='script.js'></script>    
 </body>
 </html>
