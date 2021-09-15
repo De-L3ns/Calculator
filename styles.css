@@ -57,12 +57,12 @@ header h1 {
     padding: 10px;
 }
 
-.calculator-button-top {
+#calculator-button-top {
     width: 48%;
     height: 100px;
 }
 
-.calculator-button {
+#calculator-button {
     padding: 10px;
     width: 24%;
     height: 100px;

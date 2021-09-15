@@ -34,7 +34,36 @@ function operate(operator, numOne, numTwo) { // this function takes an operator 
     } 
 }
 
-console.log(operate('+', 10, 2));
-console.log(operate('-', 10, 2));
-console.log(operate('*', 10, 2));
-console.log(operate('/', 10, 2));
+let startingValue = '0,00';
+let displayValue = '';
+let inputValueOne = [];
+let operator = ''
+
+
+const display = document.getElementById('display');
+display.textContent = startingValue;
+
+const numberButtons = document.querySelectorAll('.number');
+numberButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        inputValueOne.push(button.value);
+        display.textContent = inputValueOne.join('');
+    });
+});
+
+const operatorButtons = document.querySelectorAll('.operator');
+operatorButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        operator = button.value;
+        console.log(inputValueOne);
+        console.log(operator);
+    })
+   
+});
+
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => {
+    display.textContent = startingValue;
+    inputValueOne = [];
+    console.log(inputValueOne);
+});
