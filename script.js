@@ -38,12 +38,13 @@ function operate(operator, numOne, numTwo) { // this function takes an operator 
     } 
 }
 
-let startingValue = '0,00';
+let startingValue = '0';
 let displayValue = '';
 let inputValueOne = [];
 let inputValueTwo = [];
 let storedNumber = '';
 let operator = '';
+let multipleEquations = false;
 
 
 const display = document.getElementById('display');
@@ -65,17 +66,25 @@ numberButtons.forEach((button) => {
 const operatorButtons = document.querySelectorAll('.operator');
 operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (operator) {
+        if (multipleEquations) {
+            let answer = operate(operator, Number(storedNumber), Number(inputValueTwo.join('')))
+            display.textContent = answer;
+            storedNumber = answer;
+            operator = button.value;
+            inputValueTwo = [];
+           
+        } else if (operator) {
             let answer = operate(operator, Number(inputValueOne.join('')), Number(inputValueTwo.join('')))
             display.textContent = answer;
-            answer = storedNumber;
+            storedNumber = answer;
             operator = button.value;
-            inputValueOne = storedNumber;
             inputValueTwo = [];
-        } else {
+            multipleEquations = true;
+        } else {  
             operator = button.value;
             display.textContent = operator;
-        }
+            
+        };
         
         
     });
@@ -89,12 +98,44 @@ clearButton.addEventListener('click', () => {
     inputValueTwo = [];
     operator = '';
     storedNumber = '';
+    multipleEquations = false;
     
 });
 
 
 const equalsButton = document.querySelector('.equals');
 equalsButton.addEventListener('click', () => {
-    let answer = operate(operator, Number(inputValueOne.join('')), Number(inputValueTwo.join('')))
-    display.textContent = answer;
+    
+    if (operator && inputValueTwo) {
+    
+        if (multipleEquations) {
+            let answer = operate(operator, Number(storedNumber), Number(inputValueTwo.join('')));
+            display.textContent = answer;
+        } else {
+            let answer = operate(operator, Number(inputValueOne.join('')), Number(inputValueTwo.join('')))
+            display.textContent = answer;
+        };
+    
+    };
+});
+
+const darkMode = document.querySelector('.dark-mode');
+const bodyColor = document.querySelector('body');
+const headerColor = document.querySelector('header');
+const githubIcon = document.querySelector('icon');
+darkMode.addEventListener('click', () => {
+    
+    if (darkMode.textContent == 'Dark Mode') {
+        darkMode.textContent = 'Light Mode';
+        darkMode.style.color = 'white';
+        bodyColor.style.backgroundColor = '#121212';
+        headerColor.style.color = 'white';
+        githubIcon.style.color = 'white';
+    } else {
+        darkMode.textContent = 'Dark Mode';
+        darkMode.style.color = 'black';
+        bodyColor.style.backgroundColor = 'white';
+        headerColor.style.color = 'black';
+        githubIcon.style.color = 'black'; // bug with github icon?
+    };
 });

@@ -1,33 +1,29 @@
-* {
-    border: 2px solid black;
-}
+
 
 
 header {
     text-align: center;
 }
 
-header h1 {
-    color: rgba(150, 29, 29, 0.747);
-}
 
 #flex-container {
     display: flex;
     align-content: center;
     align-items: center;
-    border-color: green;
     
 }
 
 #flex-left {
     width: 200px;
-    height: 800px;
-    border-color: orange;
+    height: 600px;
+    
 }
 
 
 
 #calculator {
+    border-radius: 25px;
+    background-color: rgb(102, 162, 211);
     flex-shrink: 0;
     display: inline-flex;
     align-content: center;
@@ -35,44 +31,65 @@ header h1 {
     justify-content: space-evenly;
     margin: auto;
     width: 600px;
-    height: 800px;
-    border-color: red;
+    height: 600px;
+    
 }
 
 #calculator-screen {
     flex: 1;
     width: 600px;
-    height: 80px;
     
 }
 
 #calculator-screen p {
+    background-color: grey;
+    border-radius: 25px;
     font-size: 50px;
+    font-weight: bold;
     text-align: right;
     padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 #calculator-buttons {
+    align-content: center;
     flex: 4;
-    flex-wrap: wrap;
     padding: 10px;
+    
 }
 
 #calculator-button-top {
-    width: 48%;
-    height: 100px;
+    border: none;
+    border-radius: 25px;
+    background-color: grey;
+    margin-bottom: 5px;
+    font-size: 20px;
+    width: 49%;
+    height: 80px;
 }
 
+#calculator-button-top:hover {
+    background-color: orange;
+}
 #calculator-button {
+    margin-bottom: 5px;
+    border-radius: 25px;
+    border: none;
+    background-color: grey;
+    font-size: 20px;
     padding: 10px;
     width: 24%;
-    height: 100px;
+    height: 80px;
 }
 
+#calculator-button:hover {
+    background-color: orange;
+}
 
 #flex-right {
     width: 200px;
     height: 800px;
-    border-color: blue;
+    
 }
 
 footer {
@@ -90,10 +107,12 @@ footer::after {
 }
 
 footer p {
-    color: rgba(150, 29, 29, 0.747);
-    padding: 10px;
+    color: black;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
 a:link, i {
-    color: black;
+    margin-right: 10px;
+    color:rgb(102, 162, 211);
 }
