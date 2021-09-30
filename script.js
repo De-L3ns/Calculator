@@ -39,27 +39,60 @@ function operate(operator, numOne, numTwo) { // this function takes an operator 
 }
 
 let startingValue = '0';
+let startingValueTop = '...'
+let equationValue = [];
 let displayValue = '';
 let inputValueOne = [];
 let inputValueTwo = [];
 let storedNumber = '';
+let lastCharacter = '';
 let operator = '';
 let multipleEquations = false;
 
-
-const display = document.getElementById('display');
-display.textContent = startingValue;
+const displayTop = document.getElementById('display-top')
+const displayBot = document.getElementById('display-bot');
+displayTop.textContent = startingValueTop;
+displayBot.textContent = startingValue;
 
 const numberButtons = document.querySelectorAll('.number');
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
+        
+        
+        
+        
         if (operator) {
-            inputValueTwo.push(button.value);
-            display.textContent = inputValueTwo.join('');
+            if (lastCharacter == '.') {
+                lastCharacter = button.value;
+                
+                
+            
+            
+            
+            } else {
+                lastCharacter = button.value;
+                inputValueTwo.push(button.value);
+                equationValue.push(button.value);
+                displayBot.textContent = inputValueTwo.join('');
+                displayTop.textContent = equationValue.join('');
+            };
+            
         } else {
-            inputValueOne.push(button.value);
-            display.textContent = inputValueOne.join('');
-        }
+            if (lastCharacter == '.') {
+                lastCharacter = button.value;
+                
+                
+                
+            } else {
+                lastCharacter = button.value;
+                inputValueOne.push(button.value);
+                equationValue.push(button.value);
+                displayBot.textContent = inputValueOne.join('');
+                displayTop.textContent = equationValue.join('');
+            }
+            
+            
+        };
     });
 });
 
@@ -68,21 +101,31 @@ operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
         if (multipleEquations) {
             let answer = operate(operator, Number(storedNumber), Number(inputValueTwo.join('')))
-            display.textContent = answer;
+            equationValue.push(' = ');
+            equationValue.push(answer);
+            displayTop.textContent = equationValue.join('');
+            displayBot.textContent = answer;
             storedNumber = answer;
             operator = button.value;
             inputValueTwo = [];
            
         } else if (operator) {
             let answer = operate(operator, Number(inputValueOne.join('')), Number(inputValueTwo.join('')))
-            display.textContent = answer;
+            equationValue.push(' = ');
+            equationValue.push(answer);
+            displayTop.textContent = equationValue.join('');
+            displayBot.textContent = answer;
             storedNumber = answer;
             operator = button.value;
             inputValueTwo = [];
             multipleEquations = true;
         } else {  
+            equationValue.push(' ');
+            equationValue.push(button.value);
+            equationValue.push(' ');
             operator = button.value;
-            display.textContent = operator;
+            displayTop.textContent = equationValue.join('');
+            displayBot.textContent = operator;
             
         };
         
@@ -93,9 +136,11 @@ operatorButtons.forEach((button) => {
 
 const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', () => {
-    display.textContent = startingValue;
+    displayBot.textContent = startingValue;
+    displayTop.textContent = startingValue;
     inputValueOne = [];
     inputValueTwo = [];
+    equationValue = [];
     operator = '';
     storedNumber = '';
     multipleEquations = false;
@@ -110,10 +155,16 @@ equalsButton.addEventListener('click', () => {
     
         if (multipleEquations) {
             let answer = operate(operator, Number(storedNumber), Number(inputValueTwo.join('')));
-            display.textContent = answer;
+            equationValue.push(' = ');
+            equationValue.push(answer);
+            displayTop.textContent = equationValue.join('');
+            displayBot.textContent = answer;
         } else {
             let answer = operate(operator, Number(inputValueOne.join('')), Number(inputValueTwo.join('')))
-            display.textContent = answer;
+            equationValue.push(' = ');
+            equationValue.push(answer);
+            displayTop.textContent = equationValue.join('');
+            displayBot.textContent = answer;
         };
     
     };

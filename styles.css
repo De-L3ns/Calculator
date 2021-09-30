@@ -31,7 +31,7 @@ header {
     justify-content: space-evenly;
     margin: auto;
     width: 600px;
-    height: 600px;
+    height: 720px;
     
 }
 
@@ -41,7 +41,7 @@ header {
     
 }
 
-#calculator-screen p {
+#display-bot {
     background-color: grey;
     border-radius: 25px;
     font-size: 50px;
@@ -51,10 +51,21 @@ header {
     margin-left: 10px;
     margin-right: 10px;
 }
+
+#display-top {
+    border-radius: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: right;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 80px;
+}
 #calculator-buttons {
     align-content: center;
     flex: 4;
     padding: 10px;
+    
     
 }
 
@@ -63,7 +74,7 @@ header {
     border-radius: 25px;
     background-color: grey;
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 25px;
     width: 49%;
     height: 80px;
 }
