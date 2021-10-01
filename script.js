@@ -100,9 +100,12 @@ const operatorButtons = document.querySelectorAll('.operator');
 operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
         if (multipleEquations) {
-            let answer = operate(operator, Number(storedNumber), Number(inputValueTwo.join('')))
-            equationValue.push(' = ');
+            let answer = operate(operator, Number(storedNumber), Number(inputValueTwo.join('')));
+            equationValue = [];
             equationValue.push(answer);
+            equationValue.push(' ');
+            equationValue.push(button.value);
+            equationValue.push(' ');
             displayTop.textContent = equationValue.join('');
             displayBot.textContent = answer;
             storedNumber = answer;
@@ -110,14 +113,17 @@ operatorButtons.forEach((button) => {
             inputValueTwo = [];
            
         } else if (operator) {
-            let answer = operate(operator, Number(inputValueOne.join('')), Number(inputValueTwo.join('')))
-            equationValue.push(' = ');
-            equationValue.push(answer);
-            displayTop.textContent = equationValue.join('');
+            let answer = operate(operator, Number(inputValueOne.join('')), Number(inputValueTwo.join('')));
             displayBot.textContent = answer;
             storedNumber = answer;
             operator = button.value;
             inputValueTwo = [];
+            equationValue = [];
+            equationValue.push(answer);
+            equationValue.push(' ');
+            equationValue.push(button.value);
+            equationValue.push(' ');
+            displayTop.textContent = equationValue.join('');
             multipleEquations = true;
         } else {  
             equationValue.push(' ');
@@ -155,12 +161,14 @@ equalsButton.addEventListener('click', () => {
     
         if (multipleEquations) {
             let answer = operate(operator, Number(storedNumber), Number(inputValueTwo.join('')));
+            equationValue = [];
             equationValue.push(' = ');
             equationValue.push(answer);
             displayTop.textContent = equationValue.join('');
             displayBot.textContent = answer;
         } else {
             let answer = operate(operator, Number(inputValueOne.join('')), Number(inputValueTwo.join('')))
+            equationValue = [];
             equationValue.push(' = ');
             equationValue.push(answer);
             displayTop.textContent = equationValue.join('');
