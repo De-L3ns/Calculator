@@ -39,7 +39,7 @@ function operate(operator, numOne, numTwo) { // this function takes an operator 
 }
 
 let startingValue = '0';
-let startingValueTop = '...'
+let startingValueTop = '0'
 let equationValue = [];
 let displayValue = '';
 let inputValueOne = [];
@@ -49,21 +49,21 @@ let lastCharacter = '';
 let operator = '';
 let multipleEquations = false;
 
-const displayTop = document.getElementById('display-top')
+const displayTop = document.getElementById('display-top');
 const displayBot = document.getElementById('display-bot');
 displayTop.textContent = startingValueTop;
 displayBot.textContent = startingValue;
 
-const numberButtons = document.querySelectorAll('.number');
-numberButtons.forEach((button) => {
+const numberButtons = document.querySelectorAll('.number'); // this contains the logic for number buttons (including .)
+numberButtons.forEach((button) => {                         // being pressed.
     button.addEventListener('click', () => {
         
         
         
         
-        if (operator) {
+        if (operator) { // if an operator is allready present inputValueTwo has to be updated instead of inputValueOne
             if (lastCharacter == '.') {
-                lastCharacter = button.value;
+                lastCharacter = button.value; // this here makes sure you can not add multiple . 
                 
                 
             
@@ -78,7 +78,7 @@ numberButtons.forEach((button) => {
             };
             
         } else {
-            if (lastCharacter == '.') {
+            if (lastCharacter == '.') { // this here makes sure you can not add multiple . 
                 lastCharacter = button.value;
                 
                 
@@ -96,10 +96,10 @@ numberButtons.forEach((button) => {
     });
 });
 
-const operatorButtons = document.querySelectorAll('.operator');
+const operatorButtons = document.querySelectorAll('.operator'); // logic for the operator buttons
 operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (multipleEquations) {
+        if (multipleEquations) { // checks if there is allready an equation being made so the result is used
             let answer = operate(operator, Number(storedNumber), Number(inputValueTwo.join('')));
             equationValue = [];
             equationValue.push(answer);
@@ -112,7 +112,7 @@ operatorButtons.forEach((button) => {
             operator = button.value;
             inputValueTwo = [];
            
-        } else if (operator) {
+        } else if (operator) { //checks if there is allready an operator present so multiple equations can be made
             let answer = operate(operator, Number(inputValueOne.join('')), Number(inputValueTwo.join('')));
             displayBot.textContent = answer;
             storedNumber = answer;
@@ -126,7 +126,7 @@ operatorButtons.forEach((button) => {
             displayTop.textContent = equationValue.join('');
             multipleEquations = true;
         } else {  
-            equationValue.push(' ');
+            equationValue.push(' '); 
             equationValue.push(button.value);
             equationValue.push(' ');
             operator = button.value;
@@ -140,7 +140,7 @@ operatorButtons.forEach((button) => {
    
 });
 
-const clearButton = document.querySelector('.clear');
+const clearButton = document.querySelector('.clear'); // this button clears the whole screen and resets the variabels.
 clearButton.addEventListener('click', () => {
     displayBot.textContent = startingValue;
     displayTop.textContent = startingValue;
@@ -154,8 +154,8 @@ clearButton.addEventListener('click', () => {
 });
 
 
-const equalsButton = document.querySelector('.equals');
-equalsButton.addEventListener('click', () => {
+const equalsButton = document.querySelector('.equals'); // the equals button shows the result on the screen
+equalsButton.addEventListener('click', () => { 
     
     if (operator && inputValueTwo) {
     
@@ -178,6 +178,7 @@ equalsButton.addEventListener('click', () => {
     };
 });
 
+// logic for the dark mode and changing components
 const darkMode = document.querySelector('.dark-mode');
 const bodyColor = document.querySelector('body');
 const headerColor = document.querySelector('header');
